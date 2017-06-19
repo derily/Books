@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.1.2.js"></script>
+    <script src="http://localhost:44530/signalr/hubs"></script>
+    <title></title>
+    <script>
+        $.connection.hub.url = 'http://localhost:44530/signalr/hubs';
+        var perfHub = $.connection.perfHub;
+        perfHub.client.broadcastMessage = function (name,message) {
+                console.log(message);
+        }
+
+        $.connection.hub.start().done(function () {
+            console.log('signalr is starting..')
+            console.log('Now connected, connection ID=' + $.connection.hub.id);
+        });
+
+        //connection.hub.start().done(function () {
+        //    console.log('signalr start success!');
+        //    var perfHub = $.connection.perfHub;
+
+        //    perfHub.client.receiveNotification = function (message) {
+        //        console.log(message);
+        //    }
+        //});
+       
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
